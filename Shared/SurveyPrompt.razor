@@ -1,0 +1,16 @@
+﻿<div class="alert alert-secondary mt-4" role="alert">
+    <span class="oi oi-pencil mr-2" aria-hidden="true"></span>
+    <strong>@Title</strong>
+
+    <span class="text-nowrap">
+        &nbsp;   Följ länken för att   &nbsp;
+        <a target="_blank" class="font-weight-bold" href="https://dl.ebooksworld.ir/books/Microsoft.Blazor.3rd.Edition.Peter.Himschoot.Apress.978148427844.EBooksWorld.ir.pdf">fördjupa Dina kunskaper</a>
+    </span>
+    &nbsp;  och lära Dig mer om Blazor
+</div>
+
+@code {
+    // Demonstrates how a parent component can supply parameters
+    [Parameter]
+    public string Title { get; set; }
+}

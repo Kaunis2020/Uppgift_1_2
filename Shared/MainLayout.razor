@@ -1,0 +1,51 @@
+﻿@inherits LayoutComponentBase
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Uppgift1 Del 2</title>
+</head>
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div id="maincontainer">
+            <div id="logotypediv">
+                <img src="/images/logo.png" alt="logo" id="imageid" />
+                <section id="timediv"><b>Dagens datum:</b>&nbsp;  @DateTime.Now.ToShortDateString()</section>
+            </div>
+            <div class="wrapper">
+                <div class="noneborder">
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item pinksection">
+                                <a class="nav-link text-dark" asp-area="" href="/"><b>Start</b></a>
+                            </li>
+                            <li class="nav-item pinksection">
+                                <a class="nav-link text-dark" asp-area="" href="/counter"><b>Konvertera</b></a>
+                            </li>
+                            <li class="nav-item pinksection">
+                                <a class="nav-link text-dark" asp-area="" href="/fetchdata"><b>JSON</b></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <main role="main">
+                        <section id="maincontainer">
+                            @Body
+                        </section>
+                    </main>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+        <footer class="border-top footer text-muted">
+            <section id="footer">
+                &copy; 2023 - Uppgift1 Del2 - Larissa Rosenbrant, laro0501@@student.miun.se
+            </section>
+        </footer>
+    </div>
+</body>
+</html>

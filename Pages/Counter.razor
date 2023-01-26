@@ -1,0 +1,53 @@
+﻿@page "/counter"
+
+
+    <h1>Konvertera</h1>
+    <br />
+    <h4>Konvertera nedanstående mått</h4>
+    <br />
+    <div class="form-group">
+        <label for="meter" class="control-label"><b>Ange meter:</b></label>
+        <input for="meter" class="form-control" @bind="@IncrementMeter" />
+    </div>
+    <p><b>Svaret i feet:</b></p>
+    <div class="form-group">
+        <label for="meter" class="control-label">@IncrementFeet</label>
+    </div>
+
+    <button class="btn btn-primary" @onclick="ConvertMeter">Beräkna</button>
+    <br />
+    <br />
+    <hr />
+    <hr />
+    <br />
+    <br />
+    <div class="form-group">
+        <label for="kilometer" class="control-label"><b>Ange kilometer:</b></label>
+        <input for="kilometer" class="form-control" @bind="@IncrementKm" />
+    </div>
+    <p><b>Svaret i miles:</b></p>
+    <div class="form-group">
+        <label for="meter" class="control-label">@IncrementMiles</label>
+    </div>
+
+    <button class="btn btn-primary" @onclick="ConvertKilometer">Beräkna</button>
+    <br />
+    <br />
+    <br />
+    @code {
+
+        public double IncrementMeter { get; set; } = 0;
+        public double IncrementFeet { get; set; } = 0;
+        public double IncrementKm { get; set; } = 0;
+        public int IncrementMiles { get; set; } = 0;
+
+        private void ConvertMeter()
+        {
+            IncrementFeet = Math.Round(IncrementMeter * 3.2808399, 2);
+        }
+
+        private void ConvertKilometer()
+        {
+            IncrementMiles = (int)Math.Round(IncrementKm * 0.6214);
+        }
+    }

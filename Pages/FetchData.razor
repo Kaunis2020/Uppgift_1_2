@@ -1,0 +1,72 @@
+﻿@page "/fetchdata"
+@inject HttpClient Http
+
+<style>
+    td.email {
+        color: blue;
+        font-weight: bolder;
+        text-decoration-line: underline;
+        text-decoration-color: blue;
+    }
+</style>
+
+<h1>Våra medarbetare</h1>
+<br/>
+<p>Alla våra medarbetare i JSON-format</p>
+<br/>
+@if (ouremployees == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Förnamn</th>
+                <th>Efternamn</th>
+                <th>E-post</th>
+                <th>Telefon</th>
+                <th>Avdelning</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var empl in ouremployees)
+            {
+            <tr>
+                <td>@empl.Nummer</td>
+                <td>@empl.First_name</td>
+                <td>@empl.Last_name</td>
+                <td class="email">@empl.Email</td>
+                <td>@empl.Phone</td>
+                <td>@empl.Department</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Employee[] ouremployees;
+
+    protected override async Task OnInitializedAsync()
+    {
+        ouremployees = await Http.GetFromJsonAsync<Employee[]>("sample-data/employees.json");
+    }
+
+    public class Employee
+    {
+        public int Nummer { get; set; }
+
+        public string First_name { get; set; }
+
+        public string Last_name { get; set; }
+
+        public string Email { get; set; }
+
+        public string Phone { get; set; }
+
+        public string Department { get; set; }
+    }
+}
